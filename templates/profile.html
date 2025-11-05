@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>👤 Profile</h2>
+            <a href="{{ url_for('dashboard') }}" class="back-btn">← Back to Dashboard</a>
+        </div>
+
+        <h3>Username: {{ username }}</h3>
+
+        {% if message %}
+            <p class="success">{{ message }}</p>
+        {% endif %}
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" class="profile-form">
+            <label>Current Password:</label>
+            <input type="password" name="current_password" required>
+
+            <label>New Password:</label>
+            <input type="password" name="new_password" required>
+
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+</body>
+</html>
